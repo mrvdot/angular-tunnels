@@ -1,0 +1,13 @@
+{
+  "name": "angular-tunnels",
+  "version": "0.0.0",
+  "main": "tunnels.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies" : {
+  	"angular" : "~1.0.7"
+  }
+}
