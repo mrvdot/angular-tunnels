@@ -6,7 +6,7 @@ Angular tunnels provides a way of creating a communication tunnel between two or
 To install tunnels, you can either clone this repository directly, or use bower to install:
 
 ```sh
-bower install mrvdot/angular-tunnels
+bower install angular-tunnels
 ```
 
 Then include the `tunnels.js` file into your html and require `mvd.tunnels` in your module:
