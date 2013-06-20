@@ -21,8 +21,8 @@ Tunnels works by registering events within a map that can be injected directly i
 **Directive usage** (Preferred method)
 
 ```html
-<div id="dir1" my-awesome-directive tunnel="awesomeness"></div>
-<div id="dir2" my-awesome-directive tunnel="awesomeness"></div>
+<div id="dir1" my-awesome-directive mvd-tunnel="awesomeness"></div>
+<div id="dir2" my-awesome-directive mvd-tunnel="awesomeness"></div>
 ```
 
 ```javascript
@@ -30,7 +30,7 @@ angular.module('myApp')
     .directive('myAwesomeDirective', function () {
         var count = 1;
         return {
-            require : 'tunnel',//Grab the tunnel controller
+            require : 'mvdTunnel',//Grab the tunnel controller
             link : function ($scope, $element, $attrs, tunnel) {
                 count++;//Count how many instances of this directive we have initialized
                 //Within directive, we're automatically namespaced to the tunnel attribute value,
