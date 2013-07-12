@@ -1,8 +1,17 @@
 (function(angular) {
 	var slice = [].slice;//for convenience
 	angular.module('mvd.tunnels', [])
-		.factory('mvdTunnelMap', function () {
+		.factory('mvdTunnelMap', function ($rootScope) {
 			var map = {};
+
+			//call apply if we're not already in the middle of an apply/digest
+			var sa = function (cb) {
+				if ($rootScope.$$phase) {
+					cb();
+				} else {
+					$rootScope.$apply(cb)
+				}
+			}
 
 			var mergeMessageMaps = function (tunnel, callbacks) {
 				var tMap;
@@ -60,7 +69,9 @@
 					var args = [e].concat(slice.call(arguments, 2));
 
 					for (var i = 0, ii = cbs.length; i < ii; i++) {
-						cbs[i].apply(null, args);
+						sa(function() {
+							cbs[i].apply(null, args);
+						});
 					}
 				}
 			}
@@ -86,6 +97,9 @@
 					//@param message - Event/Message name to register to, or object hash of messages to callbacks
 					//@param callback - Callback if only registering for a single message
 					ctrl.listen = function (message, cb) {
+						if (angular.isObject(message) && message.namespace) {
+							mvdTunnelMap.listen(message.namespace, message.message, cb);
+						};
 						mvdTunnelMap.listen(namespace, message, cb);
 					}
 
@@ -96,7 +110,7 @@
 
 					//Send a message
 					ctrl.send = function (message /*, args... */) {
-						var args = [namespace].concat(slice.call(arguments,0));
+						var args = [namespace].concat(slice.call(arguments, 0));
 						mvdTunnelMap.send.apply(null, args);
 					}
 				}
