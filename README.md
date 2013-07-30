@@ -66,7 +66,7 @@ angular.module('myApp')
             // output: "Hello tunnels" (first argument passed to send below)
         });
     })
-    .controllter('OtherCtrl', function (mvdTunnelMap) {
+    .controller('OtherCtrl', function (mvdTunnelMap) {
         mvdTunnelMap.send('*', 'myMessage', 'Hello tunnels');
     });
 ```
