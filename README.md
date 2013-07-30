@@ -70,3 +70,17 @@ angular.module('myApp')
         mvdTunnelMap.send('*', 'myMessage', 'Hello tunnels');
     });
 ```
+
+**Additional information**
+###Digest Lifecycle###
+Much like `$emit` and `$broadcast`, all messages sent through the tunnel will be evaluated as part of the Angular scope `$digest` lifecycle, so any data-model changes made as part of your listeners will be reflected immediately.
+
+###Unsubscribing###
+Version 0.0.5 brought the ability to unsubscribe, following the same pattern as the built-in `$on` method. This means the return value of `listen` is a function that when executed will remove your callback from the subscription list. See below for an example:
+
+```javascript
+var off = mvdTunnelMap.listen('example','message', function () {
+  alert("I'm only fired once");
+  off();//Unsubscribe
+});
+```

@@ -106,12 +106,12 @@
           //@param message - Event/Message name to register to, or object hash of messages to callbacks
           //@param callback - Callback if only registering for a single message
           ctrl.listen = function (message, cb) {
-            mvdTunnelMap.listen(namespace, message, cb);
+            return mvdTunnelMap.listen(namespace, message, cb);
           }
 
           //Alias for ctrl.listen
           ctrl.on = function (message, cb) {
-            ctrl.listen(message, cb);
+            return ctrl.listen(message, cb);
           }
 
           //Send a message
