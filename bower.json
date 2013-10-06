@@ -1,6 +1,6 @@
 {
   "name": "angular-tunnels",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "tunnels.js",
   "ignore": [
     "**/.*",
@@ -8,6 +8,6 @@
     "components"
   ],
   "dependencies" : {
-  	"angular" : "~1.0.7"
+  	"angular" : "~1.2.x"
   }
 }
