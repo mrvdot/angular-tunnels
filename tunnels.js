@@ -5,7 +5,7 @@
   function indexOf(array, obj) {
     if (array.indexOf) return array.indexOf(obj);
 
-    for ( var i = 0; i < array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
       if (obj === array[i]) return i;
     }
     return -1;

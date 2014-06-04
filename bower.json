@@ -1,13 +1,16 @@
 {
   "name": "angular-tunnels",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "tunnels.js",
   "ignore": [
     "**/.*",
     "node_modules",
     "components"
   ],
-  "dependencies" : {
-  	"angular" : "~1.2.x"
+  "dependencies": {
+    "angular": "~1.2.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.x"
   }
 }
