@@ -12,7 +12,7 @@
   };
 
   angular.module('mvd.tunnels', [])
-    .factory('mvdTunnelMap', function ($rootScope) {
+    .factory('mvdTunnelMap', function ($timeout) {
       var map = {};
 
       var mergeMessageMaps = function (tunnel, callbacks) {
@@ -76,10 +76,9 @@
 
           for (var i = 0, ii = cbs.length; i < ii; i++) {
             if (angular.isFunction(cbs[i])) {
-              cbs[i].apply(null, args);
-              if (!$rootScope.$$phase) {
-                $rootScope.$digest();
-              };
+              $timeout(function () {
+                cbs[i].apply(null, args);
+              });
             };
           }
         }
