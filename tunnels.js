@@ -76,9 +76,11 @@
 
           for (var i = 0, ii = cbs.length; i < ii; i++) {
             if (angular.isFunction(cbs[i])) {
-              $timeout(function () {
-                cbs[i].apply(null, args);
-              });
+              (function (cb) {
+                $timeout(function () {
+                  cb.apply(null, args);
+                });
+              })(cbs[i]);
             };
           }
         }
